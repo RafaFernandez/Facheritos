@@ -74,4 +74,4 @@ async def medir(ctx):
 	except ValueError:
 		await ctx.send('Así no va esto bro, usa !ejemplo a ver si te aclaras')
 
-bot.run('ODQ0OTcyODY0MzEwNjA3ODkz.YKaMTQ.BfjloEuXqxBKxVTIqnEgVjUJkxY')
+bot.run('TOKEN')
