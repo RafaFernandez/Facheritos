@@ -41,13 +41,15 @@ async def get_input_of_type(func, ctx):
 				await ctx.send("Pásame un número entero, crack")
 			else:
 				await ctx.send("El formato no está muy fino, usa !ejemplo")
-
+@bot.event
+async def on_message(message):
+    if message.content.startswith("!"):
+        await bot.delete_message(message)
 
 @bot.command(name='mideTulas', help='Mira quien la tiene mas larga')
 async def medir(ctx):
 
 	try:
-		await bot.delete_message(ctx.message)
 		await ctx.send("¿De cuantos participantes es el ranking?")
 		ranking = await get_input_of_type(int, ctx)
 		await ctx.send("Pegame los rankings (puedes usar !ejemplo para ver el formato)")
