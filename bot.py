@@ -68,6 +68,7 @@ async def medir(ctx):
 		pares_ordenados = sorted(pares.items(), key=lambda kv: kv[1], reverse=True)
 		await ctx.send('**'+pares_ordenados[0][0] +'**' + ", tremenda tula compañero" ) 
 		indice = 1
+		mensaje = []
 		for par in pares_ordenados:
 			mensaje.append(par[0] + ": " + par[1])
 		await ctx.send(mensaje)
