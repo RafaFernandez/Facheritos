@@ -70,7 +70,7 @@ async def medir(ctx):
 		indice = 1
 		mensaje = []
 		for par in pares_ordenados:
-			mensaje.append(str(par[0]) + ": " + str(par[1]))
+			mensaje.append(str(par[0]) + ": " + str(par[1]) + "\n")
 		await ctx.send(mensaje)
 	except ValueError:
 		await ctx.send('Así no va esto bro, usa !ejemplo a ver si te aclaras')
