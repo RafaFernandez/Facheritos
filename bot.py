@@ -69,9 +69,8 @@ async def medir(ctx):
 		await ctx.send('**'+pares_ordenados[0][0] +'**' + ", tremenda tula compañero" ) 
 		indice = 1
 		for par in pares_ordenados:
-			embed.add_field(name='**'+('☆' * (ranking + 1 - indice))+'**', value=f'> {par[0]}: {par[1]}\n',inline=False)
-			indice = indice + 1
-		await ctx.send(embed=embed)
+			mensaje.append(par[0] + ": " + par[1])
+		await ctx.send(mensaje)
 	except ValueError:
 		await ctx.send('Así no va esto bro, usa !ejemplo a ver si te aclaras')
 
