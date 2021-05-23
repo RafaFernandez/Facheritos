@@ -26,6 +26,7 @@ async def roll(ctx):
 3. MiAbuela(QueEstaMuerta) ...... 457897
 4. ElPanaMiguel ...... 14564
 5. YoOtraVez ...... 4578"""
+    await ctx.message.delete()
     await ctx.send(ejemplo)
 
 def check(ctx):
