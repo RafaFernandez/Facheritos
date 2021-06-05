@@ -93,13 +93,13 @@ async def medir(ctx):
 
         mensaje.append(calcula_ranking(resultados, "DPS", ranking, raid) + "\n")
         mensaje.append(calcula_ranking(resultados, "HPS", ranking, raid))
-
-        mensaje.append("""\n\n:beginner:Las puntuaciones se basan en el HISTORICO de recounts de cada boss. 
-            :beginner:El top 1 es el que más DPS ha metido al boss en todos los trys que han caido. 
-            :beginner:Si el top DPS actual tiene 50k en un boss, tienes que hacer más de 50k para adelantarle. 
-            :beginner:Quedar top 1 un día no significa salir top 1 en las tablas, si alguien ha hecho más dps en el mismo boss otro día también queda guardado.
+	
+        mensaje.append(""":beginner:Las puntuaciones se basan en el HISTORICO de recounts de cada boss. \n
+            :beginner:El top 1 es el que más DPS ha metido al boss en todos los trys que han caido. \n
+            :beginner:Si el top DPS actual tiene 50k en un boss, tienes que hacer más de 50k para adelantarle. \n
+            :beginner:Quedar top 1 un día no significa salir top 1 en las tablas, si alguien ha hecho más dps en el mismo boss otro día también queda guardado. \n
             :beginner:El top 1 recibe 5 puntos, el top 2 recibe 4 puntos...etc \n""")
-	mensaje = ''.join(mensaje)
+        mensaje = ''.join(mensaje)
         await ctx.send(mensaje)
 
     except ValueError:
