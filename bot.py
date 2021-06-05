@@ -74,9 +74,9 @@ async def medir(ctx):
 		for par in pares_ordenados:
 			if (indice == 1):
 				mensaje.append(":first_place: ")
-			if (indice == 2):
+			elif (indice == 2):
 				mensaje.append(":second_place: ")
-			if (indice == 3):
+			elif (indice == 3):
 				mensaje.append(":third_place: ")
 			else:
 				mensaje.append(str(indice) + ". ")
