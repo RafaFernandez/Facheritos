@@ -27,22 +27,24 @@ async def roll(ctx):
     await ctx.message.delete()
     await ctx.send(ejemplo)
 
+
 def check(ctx):
     return lambda m: m.author == ctx.author and m.channel == ctx.channel
 
+
 async def get_input_of_type(func, ctx):
-	while True:
-		try:
-			msg = await bot.wait_for('message', check=check(ctx))
-			return func(msg.content)
-		except ValueError:
-			if(func == int):
-				await ctx.send("Pásame un número entero, crack")
-			else:
-				await ctx.send("El formato no está muy fino, usa !ejemplo")
+    while True:
+        try:
+            msg = await bot.wait_for('message', check=check(ctx))
+            return func(msg.content)
+        except ValueError:
+            if (func == int):
+                await ctx.send("Pásame un número entero, crack")
+            else:
+                await ctx.send("El formato no está muy fino, usa !ejemplo")
 
 
-def calcula_ranking(resultados, tipo,ranking,raid):
+def calcula_ranking(resultados, tipo, ranking, raid):
     resList = resultados.split("\n")
     pares = {}
     for res in resList:
@@ -88,21 +90,30 @@ async def medir(ctx):
         resultadosHeal = await get_input_of_type(str, ctx)
 
         mensaje = [
-        ":warning: Solo cuentan las kills, si no cae el boss no se guarda el daño/heal que estabas haciendo. \n",
-        ":arrows_counterclockwise: Actualizado " + date.today().strftime("%d/%m/%Y") + "\n \n"]
+            ":warning: Solo cuentan las kills, si no cae el boss no se guarda el daño/heal que estabas haciendo. \n",
+            ":arrows_counterclockwise: Actualizado " + date.today().strftime("%d/%m/%Y") + "\n \n"]
 
         mensaje.append(calcula_ranking(resultados, "DPS", ranking, raid) + "\n")
-        mensaje.append(calcula_ranking(resultadosHeal, "HPS", ranking, raid))
-	
+        mensaje.append(calcula_ranking(resultados, "HPS", ranking, raid))
+
         mensaje.append("""\n\n:beginner:Las puntuaciones se basan en el HISTORICO de recounts de cada boss. 
 :beginner:El top 1 es el que más DPS ha metido al boss en todos los trys que han caido. 
 :beginner:Si el top DPS actual tiene 50k en un boss, tienes que hacer más de 50k para adelantarle. 
 :beginner:Quedar top 1 un día no significa salir top 1 en las tablas, si alguien ha hecho más dps en el mismo boss otro día también queda guardado. 
 :beginner:El top 1 recibe 5 puntos, el top 2 recibe 4 puntos...etc \n""")
         mensaje = ''.join(mensaje)
-        await ctx.send(mensaje)
+
+        await ctx.send("¿A qué canal lo mando? Pásame el ID")
+        channel = await get_input_of_type(str, ctx)
+        canal = bot.get_channel(channel)
+        
+        if(canal == None):
+            await ctx.send("No he encontrado un canal con ese ID")
+        else:
+            await canal.send(mensaje)
 
     except ValueError:
         await ctx.send('Así no va esto bro, usa !ejemplo a ver si te aclaras')
+
 
 bot.run(TOKEN)
