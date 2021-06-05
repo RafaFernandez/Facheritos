@@ -104,7 +104,7 @@ async def medir(ctx):
         mensaje = ''.join(mensaje)
 
         await ctx.send("¿A qué canal lo mando? Pásame el ID")
-        channel = await get_input_of_type(str, ctx)
+        channel = await get_input_of_type(int, ctx)
         canal = bot.get_channel(channel)
         
         if(canal == None):
