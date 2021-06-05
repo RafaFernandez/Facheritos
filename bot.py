@@ -66,7 +66,6 @@ async def medir(ctx):
 		        else:
 		            pares[pareja[1]]  = pares[pareja[1]] + ranking + 1 - int(pareja[0])
 		pares_ordenados = sorted(pares.items(), key=lambda kv: kv[1], reverse=True)
-		await ctx.send('**'+pares_ordenados[0][0] +'**' + ", tremenda tula compañero" ) 
 		indice = 1
 		mensaje = [
 			":warning: Solo cuentan las kills, si no cae el boss no se guarda el daño/heal que estabas haciendo. \n",
