@@ -59,6 +59,33 @@ def calcula_ranking(resultados, tipo, ranking, raid):
     pares_ordenados = sorted(pares.items(), key=lambda kv: kv[1], reverse=True)
     indice = 1
     mensaje = ["Puntuación " + tipo + " " + raid + "\n"]
+
+    # Eliminamos los empates
+    for par in pares_ordenados:
+        encontrado = False
+        empate = []
+        empate.append(par[0])
+        for par2 in pares_ordenados:
+            if (par2[1] == par[1] and par2[0] != par[0]):
+                index = pares_ordenados.index(par2)
+                pares_ordenados.insert(index, tuple((par2[0] + " / " + par[0], par2[1])))
+                pares_ordenados.remove(par2)
+                encontrado = True
+                break
+        if encontrado:
+            pares_ordenados.remove(par)
+    encontrado = False
+    par = pares_ordenados[-1]
+    for par2 in pares_ordenados:
+        if (par2[1] == par[1] and par2[0] != par[0]):
+            index = pares_ordenados.index(par2)
+            pares_ordenados.insert(index, tuple((par2[0] + " / " + par[0], par2[1])))
+            pares_ordenados.remove(par2)
+            encontrado = True
+            break
+    if encontrado:
+        pares_ordenados.remove(par)
+
     for par in pares_ordenados:
         if (indice == 1):
             mensaje.append(":first_place: ")
@@ -106,7 +133,7 @@ async def medir(ctx):
         await ctx.send("¿A qué canal lo mando? Pásame el ID")
         channel = await get_input_of_type(int, ctx)
         canal = bot.get_channel(channel)
-        
+
         if(canal == None):
             await ctx.send("No he encontrado un canal con ese ID")
         else:
