@@ -99,7 +99,7 @@ async def medir(ctx):
             :beginner:Si el top DPS actual tiene 50k en un boss, tienes que hacer más de 50k para adelantarle. 
             :beginner:Quedar top 1 un día no significa salir top 1 en las tablas, si alguien ha hecho más dps en el mismo boss otro día también queda guardado.
             :beginner:El top 1 recibe 5 puntos, el top 2 recibe 4 puntos...etc \n""")
-
+	mensaje = ''.join(mensaje)
         await ctx.send(mensaje)
 
     except ValueError:
