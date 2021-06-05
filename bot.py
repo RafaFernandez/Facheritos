@@ -78,7 +78,6 @@ async def medir(ctx):
         await ctx.message.delete()
         await ctx.send("¿De cuantos participantes es el ranking?")
         ranking = await get_input_of_type(int, ctx)
-        await ctx.message.delete()
         await ctx.send("Pásame el nombre de la raid")
         raid = await get_input_of_type(str, ctx)
 
