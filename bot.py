@@ -68,9 +68,22 @@ async def medir(ctx):
 		pares_ordenados = sorted(pares.items(), key=lambda kv: kv[1], reverse=True)
 		await ctx.send('**'+pares_ordenados[0][0] +'**' + ", tremenda tula compañero" ) 
 		indice = 1
-		mensaje = []
+		mensaje = [
+			":warning: Solo cuentan las kills, si no cae el boss no se guarda el daño/heal que estabas haciendo. \n",
+			":arrows_counterclockwise: Actualizado " + date.today().strftime("%d/%m/%Y") + "\n \n",
+			"Puntuación DPS Ny'Alotha HC \n"]
 		for par in pares_ordenados:
-			mensaje.append(str(par[0]) + ": " + str(par[1]) + "\n")
+			if (indice == 1):
+				mensaje.append(":first_place: ")
+			if (indice == 2):
+				mensaje.append(":second_place: ")
+			if (indice == 3):
+				mensaje.append(":third_place: ")
+			else:
+				mensaje.append(str(indice) + ". ")
+			mensaje.append(str(str(par[0]) + ": " + str(par[1]) + " :eggplant: \n"))
+			indice = indice + 1
+		mensaje = ''.join(mensaje)
 		await ctx.send(mensaje)
 	except ValueError:
 		await ctx.send('Así no va esto bro, usa !ejemplo a ver si te aclaras')
