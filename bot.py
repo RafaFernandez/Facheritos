@@ -121,7 +121,7 @@ async def medir(ctx):
             ":arrows_counterclockwise: Actualizado " + date.today().strftime("%d/%m/%Y") + "\n \n"]
 
         mensaje.append(calcula_ranking(resultados, "DPS", ranking, raid) + "\n")
-        mensaje.append(calcula_ranking(resultados, "HPS", ranking, raid))
+        mensaje.append(calcula_ranking(resultadosHeal, "HPS", ranking, raid))
 
         mensaje.append("""\n\n:beginner:Las puntuaciones se basan en el HISTORICO de recounts de cada boss. 
 :beginner:El top 1 es el que más DPS ha metido al boss en todos los trys que han caido. 
